@@ -140,12 +140,13 @@
   Blur.VERSION  = '0.0.1';
 
   Blur.DEFAULTS = {
-    imageURL      : '', // URL to the image
-    blurAmount    : 10, // Amount of blurrines
-    imageClass    : '', // CSS class that will be applied to the image and to the SVG element,
-    overlayClass  : '', // CSS class of the element that will overlay the blur image
-    duration      : false, // If the image needs to be faded in, how long should that take
-    opacity       : 1 // Specify the final opacity
+    imageURL          : '', // URL to the image
+    blurAmount        : 10, // Amount of blurrines
+    imageClass        : '', // CSS class that will be applied to the image and to the SVG element,
+    overlayClass      : '', // CSS class of the element that will overlay the blur image
+    duration          : false, // If the image needs to be faded in, how long should that take
+    opacity           : 1, // Specify the final opacity
+    imageAspectRatio  : 'none' // Allow optional image aspect ratio
   };
 
   Blur.prototype.detectVelocity= function() {
@@ -273,7 +274,7 @@
       'externalResourcesRequired' : 'true',
       href: url,
       style: 'filter:url(#' + filterId + ')', //filter link
-      preserveAspectRatio: 'none'
+      preserveAspectRatio: this.options.imageAspectRatio
     });
 
     image.addEventListener('load', function() {
